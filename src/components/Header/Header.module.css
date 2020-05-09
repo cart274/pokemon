@@ -1,0 +1,25 @@
+@value colors: "../../assets/styles/variables.css";
+@value black, cerulean, atlantis from colors;
+
+.header{
+    margin: 10px auto;
+    width: 20vw;
+}
+
+.header img{
+    width: 20vw;
+}
+
+.btnLang, .btnLang:active, .btnLang:focus{
+    margin: -28px -20px 0 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    display: block;
+    float: right;
+}
+.btnLang img{
+    width: 25px;
+    height: 16px;
+}

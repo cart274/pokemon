@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware  } from 'redux';
-import user  from '../containers/Home/reducers'
+import pokemons  from '../containers/Home/reducers'
 import thunk from 'redux-thunk'
 const combinedReducers = combineReducers({
-    user
+    pokemons
 })
 
 const store = createStore( combinedReducers, applyMiddleware(thunk))

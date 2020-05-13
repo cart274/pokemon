@@ -1,13 +1,19 @@
 import React from 'react';
 import style from './Loader.module.css'
-import loader from "../../assets/images/images/loader.gif"
+import loader from "../../assets/images/loading.gif"
+import { connect } from 'react-redux';
 
-const Loader = () => {
+const Loader = ({loading, t}) => {
     return(
-    <div className={style.loader}>
-        <img src={loader} alt="Loader"/>
-        <h4>Cargando...</h4>
-    </div>
+        loading &&
+        <div className={style.loader}>
+            <img src={loader} alt="Loader"/>
+            <h4>{t('Cargando...')}</h4>
+        </div>
     )
 }
-export default Loader
+const mapStateToProps = state => ({
+    loading: state.pokemons.loading,
+});
+
+export default connect(mapStateToProps)(Loader);

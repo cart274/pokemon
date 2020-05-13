@@ -7,19 +7,7 @@ import esflag from "../../assets/images/icons/esflag.jpg"
 import enflag from "../../assets/images/icons/enflag.jpg"
 
 const Header = (props) =>{
-  const {t, i18n}= useTranslation();
-  let {user} = props;
-  let lastMenuItem = {
-    text: t('Ingresar'),
-    path: '/login'
-  }
-
-  if(user.hasOwnProperty('name')){
-    lastMenuItem = {
-      text: t('Productos'),
-      path: '/products'
-    }
-  }
+  const {i18n}= useTranslation();
 
   const changeLanguage = (e)=>{
     e.preventDefault();
@@ -38,7 +26,6 @@ const Header = (props) =>{
     </section>
   );
 }
-
 
 const mapStateToProps = state => ({
   user: state.user

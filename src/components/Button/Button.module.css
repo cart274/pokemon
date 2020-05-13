@@ -1,32 +1,15 @@
 @value colors: "../../assets/styles/variables.css";
-@value black, cerulean, atlantis, white, grey from colors;
+@value white, blue, yellow from colors;
 
 .button, .button:active, .button:focus{
-    border: none;
-    padding: 15px 0px;
-    border-radius: 30px;
-    width: 250px;
-    display: block;
-    text-align: center;
-    font-size: 18px;
-    background-color: transparent;
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid yellow;
+    background-color: blue;
     cursor: pointer;
     outline: none;
-    color: white;
-    font-weight: 600;
 }
-.button.primary, .button.primary:active, .button.primary:focus{
-    background-color: cerulean;
-}
-.button.secondary, .button.secondary:active, .button.secondary:focus, 
-.button.tertiary, .button.tertiary:active, .button.tertiary:focus{
-    background-color: transparent;
-    border: 2px solid cerulean;    
-}
-.button.tertiary{
-    color: cerulean;    
-}
-.button.disabled, .button.disabled:active, .button.disabled:focus{
-    background-color: darkGrey;
-    cursor: default;
+.button.selected{
+    background-color: yellow;
 }

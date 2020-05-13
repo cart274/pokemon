@@ -5,24 +5,27 @@ import styles from './Home.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Card/Card';
-import Button from '../../components/Button/Button';
 import Loader from '../../components/Loader/Loader';
 import {getPokemons} from './actions'
-import Paginator from '../../components/Paginator/Paginator';
+import ReactPaginate from 'react-paginate';
 const RESULT_LIMIT = 5;
 
 const Home = ({data = {}, getPokemons, loading = false, error = ''}) => {
   const [offSet, setOffset] = useState(0)
   const {t}= useTranslation();
   const totalPokemons = data.count;
+  const pageCount = Math.floor(totalPokemons / RESULT_LIMIT);
   let pokemons = getPokemonList(data.results);
-  console.log(pokemons)
-  let next = useCallback((newOffSet) => setOffset(newOffSet), [setOffset])
 
   useEffect(() => {
     getPokemons(RESULT_LIMIT, offSet)
   }, [offSet]);
 
+  const showOnPageChange = useCallback((selected) =>{
+    let newOffset = (selected + 1) * RESULT_LIMIT;
+    setOffset(newOffset);
+  })
+  
   return (
     <>
       <Loader t={t}/>
@@ -33,7 +36,9 @@ const Home = ({data = {}, getPokemons, loading = false, error = ''}) => {
           <Card className={styles.card} id={id} name={name} key={id} t={t}/>)
         )}
       </section>
-      <Paginator total={50} offset={offSet} limit={RESULT_LIMIT} event={(num) => next(num)} t={t} />
+      <ReactPaginate pageCount={pageCount} pageRangeDisplayed={7} marginPagesDisplayed={2} 
+        previousLabel={t('Anterior')} nextLabel={t('Siguiente')} onPageChange={({selected = 0}) => showOnPageChange(selected)} 
+        containerClassName={styles.paginator} activeClassName={styles.pageSelected}/>
       <Footer t={t} />
     </>
   );

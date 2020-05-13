@@ -1,11 +1,13 @@
 @value colors: "../../assets/styles/variables.css";
-@value yellow, blue from colors;
+@value yellow, blue, white from colors;
 
 .home {
   margin: 20px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
+  min-height: 60vh;
 }
 
 .card {
@@ -14,6 +16,7 @@
   padding: 20px 20px 10px 20px;
   box-sizing: border-box;
   margin: 20px;
+  display: table;
 }
 
 .card img{
@@ -28,4 +31,27 @@
   font-weight: bold;
   color: blue;
   padding-top: 10px;
+}
+.paginator{
+  background-color: blue;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.paginator li{
+  padding: 5px 7px;
+}
+
+.paginator li.pageSelected a{
+  cursor: default;
+  color: white;
+}
+
+.paginator li a{
+  color: yellow;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
 }

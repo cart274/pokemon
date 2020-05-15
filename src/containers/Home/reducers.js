@@ -34,7 +34,7 @@ export default function reduxThunkReducer(state = initialState, action) {
       case LOAD_POKEMON_DETAIL_LOADING: {
         return {
             ...state,
-            loading: true,
+            loading: false,
             error:''
         };
     }

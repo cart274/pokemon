@@ -11,9 +11,9 @@ export const getPokemons = (limit, offset) => dispatch => {
     )
 };
 
-export const getPokemonDetail = (limit, offset) => dispatch => {
+export const getPokemonDetail = (url) => dispatch => {
   dispatch({ type: LOAD_POKEMON_DETAIL_LOADING });
-  axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
+  axios.get(url)
     .then( response => dispatch({ type: LOAD_POKEMON_DETAIL_SUCCESS, data: response.data })
     )
     .catch(error => dispatch({ type: LOAD_POKEMON_DETAIL_ERROR, error: error.message || 'Unexpected Error!!!' })

@@ -10,28 +10,6 @@
   min-height: 60vh;
 }
 
-.card {
-  width: 14%;
-  border: 3px solid yellow;
-  padding: 20px 20px 10px 20px;
-  box-sizing: border-box;
-  margin: 20px;
-  display: table;
-}
-
-.card img{
-  width: 100%;
-  height: auto;
-}
-.card h2{
-  text-align: center;
-  text-transform: capitalize;
-  line-height: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: blue;
-  padding-top: 10px;
-}
 .paginator{
   background-color: blue;
   margin: 0 auto;

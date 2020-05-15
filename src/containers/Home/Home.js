@@ -6,12 +6,13 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
-import {getPokemons} from './actions'
+import {getPokemons, getPokemonDetail} from './actions'
 import ReactPaginate from 'react-paginate';
 const RESULT_LIMIT = 5;
 
-const Home = ({data = {}, getPokemons, loading = false, error = ''}) => {
+const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error = '', dataDetail={}}) => {
   const [offSet, setOffset] = useState(0)
+  const [pokemonSelected, setPokemonSelected] = useState({})
   const {t}= useTranslation();
   const totalPokemons = data.count;
   const pageCount = Math.floor(totalPokemons / RESULT_LIMIT);
@@ -22,18 +23,28 @@ const Home = ({data = {}, getPokemons, loading = false, error = ''}) => {
   }, [offSet]);
 
   const showOnPageChange = useCallback((selected) =>{
-    let newOffset = (selected + 1) * RESULT_LIMIT;
+    let newOffset = (selected) * RESULT_LIMIT;
     setOffset(newOffset);
   })
-  
+
+  useEffect(() => {
+    if(pokemonSelected.url)
+      getPokemonDetail(pokemonSelected.url)
+  }, [pokemonSelected]);
+
+  const onSelectPokemon = useCallback((url, id) =>{
+    setPokemonSelected({url, id});
+  })
+  console.log(dataDetail);
   return (
     <>
       <Loader t={t}/>
       <Header/>
       <section className={styles.home}>
         {
-          pokemons.map(({name, id}) => (
-          <Card className={styles.card} id={id} name={name} key={id} t={t}/>)
+          pokemons.map(({name, id, url}) => (
+          <Card id={id} name={name} key={id} t={t} onSelect={()=>{onSelectPokemon(url, id);}} 
+          detail={id === pokemonSelected.id && dataDetail}/>)
         )}
       </section>
       <ReactPaginate pageCount={pageCount} pageRangeDisplayed={7} marginPagesDisplayed={2} 
@@ -62,10 +73,12 @@ const mapStateToProps = state => ({
   data: state.pokemons.data,
   loading: state.pokemons.loading,
   error: state.pokemons.error,
+  dataDetail: state.pokemons.dataDetail,
 });
 
 const mapDispatchToProps = {
-  getPokemons
+  getPokemons,
+  getPokemonDetail
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

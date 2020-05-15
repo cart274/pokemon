@@ -3,8 +3,8 @@ import styles from "./Header.module.css";
 import { connect } from 'react-redux';
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.png"
-import esflag from "../../assets/images/icons/esflag.jpg"
-import enflag from "../../assets/images/icons/enflag.jpg"
+import esflag from "../../assets/images/esflag.jpg"
+import enflag from "../../assets/images/enflag.jpg"
 
 const Header = (props) =>{
   const {i18n}= useTranslation();

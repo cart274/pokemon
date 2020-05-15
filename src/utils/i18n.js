@@ -8,6 +8,10 @@ i18n
       en: {
         translation: {
           "Desarrollado por Carlos Rodríguez": "Developed by Carlos Rodríguez",
+          "Altura": "Height",
+          "Peso": "Weight",
+          "Habilidad normal": "Normal ability",
+          "Habilidad oculta": "Hidden ability",
           "Cargando...": "Loading...",
           "": "",
         }

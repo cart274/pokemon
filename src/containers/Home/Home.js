@@ -15,7 +15,7 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
   const [pokemonSelected, setPokemonSelected] = useState({})
   const {t}= useTranslation();
   const totalPokemons = data.count;
-  const pageCount = Math.floor(totalPokemons / RESULT_LIMIT);
+  const pageCount = Math.ceil(totalPokemons / RESULT_LIMIT);
   let pokemons = getPokemonList(data.results);
 
   useEffect(() => {
@@ -32,10 +32,10 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
       getPokemonDetail(pokemonSelected.url)
   }, [pokemonSelected]);
 
-  const onSelectPokemon = useCallback((url, id) =>{
+  const onSelectPokemon = useCallback((url = '', id= 0) =>{
     setPokemonSelected({url, id});
   })
-  console.log(dataDetail);
+
   return (
     <>
       <Loader t={t}/>
@@ -44,7 +44,9 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
         {
           pokemons.map(({name, id, url}) => (
           <Card id={id} name={name} key={id} t={t} onSelect={()=>{onSelectPokemon(url, id);}} 
-          detail={id === pokemonSelected.id && dataDetail}/>)
+          detail={id === pokemonSelected.id && dataDetail} selectedClass={id === pokemonSelected.id? 'selected' : ''}
+          notSelectedClass={(pokemonSelected.id && pokemonSelected.id !== id)? 'notSelected' : ''}
+          onCloseDetail={()=>onSelectPokemon()}/>)
         )}
       </section>
       <ReactPaginate pageCount={pageCount} pageRangeDisplayed={7} marginPagesDisplayed={2} 

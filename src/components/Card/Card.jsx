@@ -1,19 +1,23 @@
 import React from 'react';
 import styles from './Card.module.css';
+import notAvailableImage from '../../assets/images/imageNotAvailable.jpg'
 
-const Card = ({name, id, t, onSelect, detail = {}}) => (
-    <div className={`${styles.card} ${detail.abilities && styles.cardSelected}`} onClick={()=>{onSelect()}}>
+const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedClass, onCloseDetail}) => (
+    <div className={`${styles.card} ${selectedClass && styles.cardSelected} ${notSelectedClass && styles.cardNotSelected}`}
+    onClick={()=>{ !selectedClass && onSelect()}} >
         <div className={styles.description}>
-            <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt={name} />
+            <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt={name} 
+             onError={(e)=>{e.target.onerror = null; e.target.src=notAvailableImage}} />
             <h2>{name}</h2>
         </div>
         {detail.abilities && detail.abilities.length > 0 && <div className={styles.details}>
-            <h3>{`${t('Altura')}:`} <span>{`${detail.height}m`}</span></h3>
-            <h3>{`${t('Peso')}:`} <span>{`${detail.weight}kg`}</span></h3>
-            { detail.abilities.map(({ability, is_hidden})=> 
-                is_hidden? <h3>{`${t('Habilidad normal')}:`} <span>{ability.name}</span></h3> :
-                <h3>{`${t('Habilidad oculta')}:`} <span>{ability.name}</span></h3>
+            <h3>{`${t('Altura')}:`} <span>{`${detail.height / 10}m`}</span></h3>
+            <h3>{`${t('Peso')}:`} <span>{`${detail.weight / 10}kg`}</span></h3>
+            { detail.abilities.map(({ability, is_hidden}, key)=> 
+                is_hidden? <h3 key={id}>{`${t('Habilidad normal')}:`} <span>{ability.name}</span></h3> :
+                <h3 key={key}>{`${t('Habilidad oculta')}:`} <span>{ability.name}</span></h3>
             )}
+            <h4 onClick={()=>{onCloseDetail()}}>Close</h4>
         </div>}
     </div>
 )

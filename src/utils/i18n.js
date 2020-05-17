@@ -13,6 +13,9 @@ i18n
           "Habilidad normal": "Normal ability",
           "Habilidad oculta": "Hidden ability",
           "Cargando...": "Loading...",
+          "Cerrar": "Close",
+          "Anterior": "Previous",
+          "Siguiente": "Next",
           "": "",
         }
       }

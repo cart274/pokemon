@@ -17,7 +17,7 @@ const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedCla
                 is_hidden? <h3 key={id}>{`${t('Habilidad normal')}:`} <span>{ability.name}</span></h3> :
                 <h3 key={key}>{`${t('Habilidad oculta')}:`} <span>{ability.name}</span></h3>
             )}
-            <h4 onClick={()=>{onCloseDetail()}}>Close</h4>
+            <h4 onClick={()=>{onCloseDetail()}}>{t('Cerrar')}</h4>
         </div>}
     </div>
 )

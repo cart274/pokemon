@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Card.module.css';
 import notAvailableImage from '../../assets/images/imageNotAvailable.jpg'
+import uuid from 'react-uuid'
 
 const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedClass, onCloseDetail}) => (
     <div className={`${styles.card} ${selectedClass && styles.cardSelected} ${notSelectedClass && styles.cardNotSelected}`}
@@ -14,8 +15,8 @@ const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedCla
             <h3>{`${t('Altura')}:`} <span>{`${detail.height / 10}m`}</span></h3>
             <h3>{`${t('Peso')}:`} <span>{`${detail.weight / 10}kg`}</span></h3>
             { detail.abilities.map(({ability, is_hidden}, key)=> 
-                is_hidden? <h3 key={id}>{`${t('Habilidad normal')}:`} <span>{ability.name}</span></h3> :
-                <h3 key={key}>{`${t('Habilidad oculta')}:`} <span>{ability.name}</span></h3>
+                is_hidden? <h3 key={uuid()}>{`${t('Habilidad normal')}:`} <span>{ability.name}</span></h3> :
+                <h3 key={uuid()}>{`${t('Habilidad oculta')}:`} <span>{ability.name}</span></h3>
             )}
             <h4 onClick={()=>{onCloseDetail()}}>{t('Cerrar')}</h4>
         </div>}

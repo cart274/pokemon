@@ -7,7 +7,7 @@ i18n
     resources: {
       en: {
         translation: {
-          "Desarrollado por Carlos Rodríguez": "Developed by Carlos Rodríguez",
+          "Desarrollado por": "Developed by",
           "Altura": "Height",
           "Peso": "Weight",
           "Habilidad normal": "Normal ability",
@@ -22,7 +22,7 @@ i18n
     },
     lng: "es",
     fallbackLng: "es",
-
+    debug: true,
     interpolation: {
       escapeValue: false
     }

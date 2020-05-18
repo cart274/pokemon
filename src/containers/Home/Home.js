@@ -25,6 +25,7 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
   const showOnPageChange = useCallback((selected) =>{
     let newOffset = (selected) * RESULT_LIMIT;
     setOffset(newOffset);
+    onSelectPokemon();
   })
 
   useEffect(() => {

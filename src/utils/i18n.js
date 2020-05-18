@@ -22,7 +22,6 @@ i18n
     },
     lng: "es",
     fallbackLng: "es",
-    debug: true,
     interpolation: {
       escapeValue: false
     }

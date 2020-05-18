@@ -1,7 +1,6 @@
 import React, {useCallback, useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from "react-i18next";
-import uuid from 'react-uuid'
 import styles from './Home.module.css';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -44,7 +43,7 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
       <section className={styles.home}>
         {
           pokemons.map(({name, id, url}) => (
-          <Card id={id} name={name} key={uuid()} t={t} onSelect={()=>{onSelectPokemon(url, id);}} 
+          <Card id={id} name={name} key={id} t={t} onSelect={()=>{onSelectPokemon(url, id);}} 
           detail={id === pokemonSelected.id && dataDetail} selectedClass={id === pokemonSelected.id? 'selected' : ''}
           notSelectedClass={(pokemonSelected.id && pokemonSelected.id !== id)? 'notSelected' : ''}
           onCloseDetail={()=>onSelectPokemon()}/>)

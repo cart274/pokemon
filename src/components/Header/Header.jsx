@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./Header.module.css";
-import { connect } from 'react-redux';
-import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.png"
 import esflag from "../../assets/images/esflag.jpg"
 import enflag from "../../assets/images/enflag.jpg"
-
+import i18n from '../../utils/i18n'
 const Header = (props) =>{
-  const {i18n}= useTranslation();
 
   const changeLanguage = (e)=>{
     e.preventDefault();

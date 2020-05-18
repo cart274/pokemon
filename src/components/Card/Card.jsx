@@ -4,7 +4,7 @@ import notAvailableImage from '../../assets/images/imageNotAvailable.jpg'
 import uuid from 'react-uuid'
 
 const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedClass, onCloseDetail}) => (
-    <div className={`${styles.card} ${selectedClass && styles.cardSelected} ${notSelectedClass && styles.cardNotSelected}`}
+    <article className={`${styles.card} ${selectedClass && styles.cardSelected} ${notSelectedClass && styles.cardNotSelected}`}
     onClick={()=>{ !selectedClass && onSelect()}} >
         <div className={styles.description}>
             <img src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt={name} 
@@ -20,6 +20,6 @@ const Card = ({name, id, t, onSelect, detail = {}, selectedClass, notSelectedCla
             )}
             <h4 onClick={()=>{onCloseDetail()}}>{t('Cerrar')}</h4>
         </div>}
-    </div>
+    </article>
 )
 export default Card

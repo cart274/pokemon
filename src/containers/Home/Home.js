@@ -19,8 +19,8 @@ const Home = ({data = {}, getPokemons, getPokemonDetail, loading = false, error 
   const pageCount = Math.ceil(totalPokemons / RESULT_LIMIT);
   let pokemons = getPokemonList(data.results);
 
-  useEffect(async () => {
-    await getPokemons(RESULT_LIMIT, offSet)
+  useEffect(() => {
+    getPokemons(RESULT_LIMIT, offSet)
   }, [offSet]);
 
   const showOnPageChange = useCallback((selected) =>{

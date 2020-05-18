@@ -34,10 +34,6 @@
   },
   "author": "Carlos Rodríguez",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cart274/pokemon/issues"
-  },
-  "homepage": "https://github.com/cart274/pokemon#readme",
   "browserslist": [
     ">0.2%",
     "not dead",

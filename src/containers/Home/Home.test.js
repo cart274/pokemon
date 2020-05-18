@@ -11,3 +11,12 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const mockStore = configureStore([]);
 const store = mockStore({pokemons: { data: {}, loading: false, error: '', dataDetail: {} }});
+
+describe('<Home />', () => {
+
+    it('Renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<Provider store={store}><Home /></Provider>, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
+})

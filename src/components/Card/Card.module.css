@@ -114,8 +114,29 @@
 
 
 
-/*Android nexus5*/
+
 @media (max-width: 812px) and (max-height: 440px) and (orientation: landscape) {
   .card{ width: 19%; margin: 0;}
   .description{padding: 5px;}
+}
+
+@media (max-width: 769px) and (max-height: 1025px) and (orientation: portrait) {
+  .card{ width: 19%; margin: 0;}
+  .description{padding: 5px;}
+  .cardSelected{
+    width: 60%;
+    margin: 0 25%;
+  }
+}
+
+@media (max-width: 415px) and (max-height: 738px) and (orientation: portrait) {
+  .card{ width: 30%; margin: 0;}
+  .description{padding: 5px;}
+  .cardSelected{
+    width: 90%;
+    margin: 0 25%;
+  }
+  .card h2{
+    font-size: 14px;
+  }
 }
